@@ -1,6 +1,12 @@
-<ul class="nav nav-pills nav-stacked">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">Menu 1</a></li>
-    <li><a href="#">Menu 2</a></li>
-    <li><a href="#">Menu 3</a></li>
+{% load staticfiles %}
+
+<ul class="nav nav-stacked menu">
+    <li class="active"><a href="{% url 'index' %}">Strona główna</a></li>
+    <li><a href="{% url 'myProfile' %}">Twój profil</a></li>
+    <li><a href="#">Organizatorzy</a></li>
+    <li><a href="#">Dla uczestników</a></li>
+        <ul class="nav submenu">
+            <li><a href="#">Terminy</a></li>
+            <li><a href="{% url 'program' %}">Program WWW11</a></li>
+        </ul>
 </ul>
