@@ -50,61 +50,7 @@
 </head>
 
 <body>
-	<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
-		<div class="container">
-			<div class="navbar-header">
-				<!-- Button for smallest screens -->
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Progressus HTML5 template"></a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav pull-right">
-					<li><a href="{% url 'index' %}">Strona główna</a></li>
 
-                    <li><a href="{% url 'program' %}">Program</a></li>
-                    
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Artykuły <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-                            {% for article in articles_on_menubar %}
-                                <li><a href="{% url 'article' article.name%}">{{ article.title }}</a></li>
-                            {% endfor %}
-                            {% if perms.wwwapp.add_article %}
-                                <li><a href="{% url 'addArticle' %}">Nowy artykuł</a></li>
-                            {% endif %}
-						</ul>
-					</li>
-                    
-                    <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Warsztaty<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-                            <li><a href="{% url 'addWorkshop' %}">Zgłoś warsztaty!</a></li>
-                            {% if has_workshops %}
-                                <li><a href="{% url 'yourWorkshops' %}">Twoje warsztaty</a></li>
-                            {% endif %}
-                            {% if perms.wwwapp.see_all_workshops %}
-                                <li><a href="{% url 'allWorkshops' %}">Wszystkie warsztaty</a></li>
-                            {% endif %}
-						</ul>
-					</li>
-                    
-                    
-                    
-                    <li><a href="{% url 'myProfile' %}">Profil</a></li>
-                    
-                    {% if user.is_authenticated %}
-                        <li><a class="btn" href="{% url 'login' %}">{{ user.first_name }} {{ user.last_name }}</a></li>
-                    {% else %}
-                        <li><a class="btn" href="{% url 'login' %}">Zaloguj</a></li>
-                    {% endif %}
-				</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-	</div> 
-	<!-- /.navbar -->
-    
-    <header id="head" class="secondary"></header>
 
 	{% if messages %}
 	<div class="container">
@@ -114,8 +60,18 @@
 	</div>
 	{% endif %}
 
-    {% block content %}
-    {% endblock %}
+<div class="container-fluid" style="margin-top: 25px;">
+<div class="row">
+    <div class="col-sm-2" style="margin-top: 6px;">
+
+        {% include 'menu.html' %}
+    </div>
+    <div class="col-sm-10">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+</div>
 
     <div id="csrftoken" style="display: none;">
         {% csrf_token %}
