@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
         <h2 class="heading">Witaj, istnieje już konto o takich danych:</h2>
         {% for match in matches %}
         <div class="panel panel-default">
@@ -26,5 +25,4 @@
                 Kontynuuj (tworząc nowe konto połączone z {{ new_provider.name|title }})
             </a>
         {% endif %}
-</div>
 {% endblock %}

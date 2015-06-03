@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
         {% if user.is_authenticated %}
             <h2 class="heading">Zalogowany jako {{ user.first_name }} {{ user.last_name }}</h2>
             <div class="user-info">
@@ -17,5 +16,4 @@
             {% endfor %}
             </div>
         {% endif %}
-</div>
 {% endblock %}

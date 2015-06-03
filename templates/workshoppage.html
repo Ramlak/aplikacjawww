@@ -3,7 +3,6 @@
 {% load bleach_tags %}
 
 {% block content %}
-<div class="container">
     <article class="col-sm-12 maincontent">
         <h1>{{ title }}</h1>
         {% if has_perm_to_edit %}
@@ -33,5 +32,4 @@
             Prowadzący warsztatów nie wstawił jeszcze opisu.
         {% endif %}
     </article>
-</div>
 {% endblock %}

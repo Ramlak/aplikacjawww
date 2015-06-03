@@ -3,7 +3,6 @@
 {% load bleach_tags %}
 
 {% block content %}
-<div class="container">
     <article class="col-sm-12 maincontent">
         {% if article.title %}<header><h1>{{ article.title }}</h1></header>{% endif %}
         {{ article.content|bleach }}
@@ -23,5 +22,4 @@
         </div>
         {% endif %}
     </article>
-</div>
 {% endblock %}
